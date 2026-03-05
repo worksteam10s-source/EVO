@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/theme.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Request</title>
+  <style>
+
+    header {
+      padding: 20px 0;
+      font-size: 32px;
+      font-weight: bold;
+      
+    }
+    .main-image {
+      width: 80%;
+      margin: 0 auto;
+      border-radius: 10px;
+      display: block;
+    }
+    .controls {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    select, input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      width: 180px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #1a7be0;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1667ba;
+    }
+    .navbar {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 30px;
+      border-radius: 20px;
+      display: flex;
+      gap: 25px;
+    }
+    .navbar i {
+      font-size: 22px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor-glow"></div>
+  <div class="main-header">
+  <img src="Pics/logo.png" alt="EVO">
+  <h1>Student Request</h1>
+  <img src="Pics/HITU.png" alt="HITU">
+</div>
+
+<!-- <form class="controls" method="get">
+    <select class="glass-card text-center p-5" name="type" id="type1">
+    </select>
+    <select class="glass-card text-center p-5" name="quist" id="quist">
+    </select></br>
+    <input class="glass-card text-center p-5" type="text" name="comment" placeholder="Comment" required />
+    <button class="glass-card text-center p-5" type="submit">Submit Quist</button>
+  </form> -->
+
+<form class="controls" method="get">
+  <!-- Custom Select 1: نوع الطلب (quist) -->
+  <div class="custom-select glass-card mb-4">
+    <div class="select-selected h-20 w-30">Request </div>
+    <div class="select-items select-hide">
+      <div data-value="enrollment">Enrollment Certificate</div>
+      <div data-value="metro">Metro Subscription</div>
+      <div data-value="military">Military Status Document</div>
+      <div data-value="transcript">Transcript</div>
+      <div data-value="idcard">Student ID Card</div>
+      <div data-value="transfer">College Transfer</div>
+      <div data-value="excuse">Semester Excuse</div>
+    </div>
+  </div>
+
+  <!-- Custom Select 2: المستندات المطلوبة (type1) -->
+  <div class="custom-select glass-card mb-4">
+    <div class="select-selected h-20 w-30" id="type1-selected">Documents</div>
+    <div class="select-items select-hide" id="type1-items">
+      <!-- هيتملي بالـ JS -->
+    </div>
+  </div>
+</br>
+
+  <input class="glass-card text-center w-70 mb-4" type="text" name="comment" placeholder="Comment" />
+
+  <button class="glass-card text-center p-2 h-20 w-30" type="submit" style="font-weight:bold; font-size:1.1rem;">
+    إرسال الطلب
+  </button>
+</form>
+<div class="data-table-container" style="z-index: -20;">
+                <div class="table-overlay"></div>
+                <div class="data-table">
+                    <div class="table-grid">
+                        <div class="cell">نوع الطلب</div><div class="cell">المستندات المطلوبة</div><div class="cell">الحالة</div><div class="cell">التاريخ</div><div class="cell">التعليقات</div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="icon-box" onclick="window.location.href='Main Page.html'">Home</div>
+    <div class="icon-box" onclick="window.location.href='book.library.html'">Library</div>
+    <div class="icon-box" onclick="window.location.href='control.html'">Control</div>
+    <div class="icon-box" onclick="window.location.href='GPS.html'">GPS</div>
+    <div class="icon-box" onclick="window.location.href='Dr.html'">Doctor</div>
+    <div class="icon-box" onclick="window.location.href='Student page.html'">Student</div>
+    <div class="icon-box" onclick="window.location.href='FAQ.html'">FAQ</div>
+    <div class="icon-box" onclick="window.location.href='News.html'">News</div>
+    <div class="icon-box" onclick="window.location.href='request-documents.html'">Requests</div>
+  </div>
+      <!-- <script>
+        const box = document.getElementById("quist");
+        const type1 = document.getElementById("type1");
+        const enrollment = {
+                title: "Enrollment Certificate",
+                items: [
+                    "Student National ID",
+                    "Parent National ID (if required)",
+                    "Payment Receipt",
+                    "Student ID / Student Code"
+                ]
+            };
+        const metro= {
+                title: "Metro Subscription",
+                items: [
+                    "Student ID",
+                    "Parent ID",
+                    "Personal Photo (4×6)",
+                    "Recent Enrollment Certificate",
+                    "Metro Application Form"
+                ]
+            };
+        const military= {
+                title: "Military Status Document",
+                items: [
+                    "National ID",
+                    "Birth Certificate",
+                    "3 Personal Photos",
+                    "Recent Enrollment Certificate",
+                    "Military Card (if available)"
+                ]
+            };
+        const transcript= {
+                title: "Transcript",
+                items: [
+                    "National ID",
+                    "Student Card",
+                    "Payment Receipt",
+                    "Official Request Form"
+                ]
+            };
+        const idcard= {
+                title: "Student ID Card",
+                items: [
+                    "Personal Photo",
+                    "National ID",
+                    "Payment Receipt",
+                    "Registration Form"
+                ]
+            };
+        const transfer= {
+                title: "College Transfer",
+                items: [
+                    "Enrollment Statement",
+                    "Grade Report",
+                    "National ID",
+                    "Official Transfer Form"
+                ]
+            };
+        const excuse= {
+                title: "Semester Excuse",
+                items: [
+                    "Official Request",
+                    "National ID",
+                    "Excuse Reason Document",
+                    "Enrollment Statement"
+                ]
+            };
+
+
+        box.innerHTML = `
+            <option>${enrollment.title}</option>
+            <option>${metro.title}</option>
+            <option>${military.title}</option>
+            <option>${transcript.title}</option>
+            <option>${idcard.title}</option>
+            <option>${transfer.title}</option>
+            <option>${excuse.title}</option>
+        `;
+        type1.innerHTML = `${enrollment.items.map(i => `<option>${i}</option>`).join("")}`
+             box.addEventListener("change", function() {
+              switch (document.getElementById("quist").value) {
+                case "Enrollment Certificate":type1.innerHTML = `${enrollment.items.map(i => `<option>${i}</option>`).join("")}` ;break;
+                case "Metro Subscription":type1.innerHTML = `${metro.items.map(i => `<option>${i}</option>`).join("")}` ;break;
+                case "Military Status Document":type1.innerHTML = `${military.items.map(i => `<option>${i}</option>`).join("")}` ;break;
+                case "Transcript":type1.innerHTML = `${transcript.items.map(i => `<option>${i}</option>`).join("")}` ;break;
+                case "Student ID Card":type1.innerHTML = `${idcard.items.map(i => `<option>${i}</option>`).join("")}` ;break;
+                case "College Transfer":type1.innerHTML = `${transfer.items.map(i => `<option>${i}</option>`).join("")}` ;break;
+                case "Semester Excuse":type1.innerHTML = `${excuse.items.map(i => `<option>${i}</option>`).join("")}` ;break;
+                default:type1.innerHTML = `${enrollment.items.map(i => `<option>${i}</option>`).join("")}`;
+      }
+             });
+   
+    </script> -->
+<script>
+  const requests = {
+    enrollment: {
+      title: "Enrollment Certificate",
+      items: ["Student National ID", "Parent National ID (if required)", "Payment Receipt", "Student ID / Student Code"]
+    },
+    metro: {
+      title: "Metro Subscription",
+      items: ["Student ID", "Parent ID", "Personal Photo (4×6)", "Recent Enrollment Certificate", "Metro Application Form"]
+    },
+    military: {
+      title: "Military Status Document",
+      items: ["National ID", "Birth Certificate", "3 Personal Photos", "Recent Enrollment Certificate", "Military Card (if available)"]
+    },
+    transcript: {
+      title: "Transcript",
+      items: ["National ID", "Student Card", "Payment Receipt", "Official Request Form"]
+    },
+    idcard: {
+      title: "Student ID Card",
+      items: ["Personal Photo", "National ID", "Payment Receipt", "Registration Form"]
+    },
+    transfer: {
+      title: "College Transfer",
+      items: ["Enrollment Statement", "Grade Report", "National ID", "Official Transfer Form"]
+    },
+    excuse: {
+      title: "Semester Excuse",
+      items: ["Official Request", "National ID", "Excuse Reason Document", "Enrollment Statement"]
+    }
+  };
+
+  // ملء القايمة الأولى
+  const quistSelected = document.querySelectorAll('.custom-select')[0].querySelector('.select-selected');
+  const quistItems = document.querySelectorAll('.custom-select')[0].querySelector('.select-items');
+
+  Object.keys(requests).forEach(key => {
+    const div = document.createElement('div');
+    div.textContent = requests[key].title;
+    div.dataset.value = key;
+    quistItems.appendChild(div);
+  });
+
+  // ملء القايمة الثانية افتراضيًا
+  const type1Selected = document.getElementById('type1-selected');
+  const type1Items = document.getElementById('type1-items');
+  function updateType1(key = 'enrollment') {
+    type1Items.innerHTML = '';
+    requests[key].items.forEach(item => {
+      const div = document.createElement('div');
+      div.textContent = item;
+      type1Items.appendChild(div);
+    });
+    type1Selected.textContent = 'Documents';
+  }
+  updateType1();
+
+  // تفعيل Custom Selects
+  document.querySelectorAll('.custom-select').forEach((select, index) => {
+    const selected = select.querySelector('.select-selected');
+    const items = select.querySelector('.select-items');
+
+    selected.addEventListener('click', () => {
+      selected.classList.toggle('active');
+      items.classList.toggle('show');
+    });
+
+    items.querySelectorAll('div').forEach(option => {
+      option.addEventListener('click', () => {
+        selected.textContent = option.textContent;
+        selected.innerHTML = option.textContent ;
+        items.classList.remove('show');
+        selected.classList.remove('active');
+
+        // لو ده القايمة الأولى → غير الثانية
+        if (index === 0) {
+          const value = option.dataset.value;
+          updateType1(value);
+        }
+      });
+    });
+  });
+
+  // إغلاق القوايم لما تضغط بره
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-select')) {
+      document.querySelectorAll('.select-items').forEach(i => i.classList.remove('show'));
+      document.querySelectorAll('.select-selected').forEach(s => s.classList.remove('active'));
+    }
+  });
+</script>
+  </body>
+</html>
