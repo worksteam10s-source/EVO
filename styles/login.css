@@ -1,0 +1,129 @@
+/* Login Page Specific Styles */
+
+#bgimg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+#bgimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#div1-1 {
+  align-items: center;
+  gap: 40px;
+  margin: 60px 20px;
+  flex-wrap: wrap;
+}
+
+#EVO {
+  width: 150px;
+  height: auto;
+}
+
+#div1-3 {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 40px;
+  background: rgba(10, 14, 39, 0.8);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(100, 200, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+#h11 {
+  font-size: 2rem;
+  color: #64c8ff;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#form1 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#form1 input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(100, 200, 255, 0.3);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#form1 input:focus {
+  outline: none;
+  border-color: #64c8ff;
+  background-color: rgba(100, 200, 255, 0.1);
+  box-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
+}
+
+#Loginbtn {
+  background: linear-gradient(135deg, #64c8ff, #ff6b9d);
+  color: #000;
+  font-weight: 700;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+#Loginbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(100, 200, 255, 0.4);
+}
+
+#google {
+  background-color: white;
+  color: #000;
+  padding: 12px 24px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#google:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+#div1-1 img:last-child {
+  width: 150px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  #div1-1 {
+    margin: 30px 10px;
+    gap: 20px;
+  }
+
+  #div1-3 {
+    padding: 30px;
+  }
+
+  #h11 {
+    font-size: 1.5rem;
+  }
+
+  #EVO,
+  #div1-1 img:last-child {
+    width: 100px;
+  }
+}
