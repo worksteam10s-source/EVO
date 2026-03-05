@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Books Library</title>
+
+<link rel="stylesheet" href="CSS/library.css">
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/theme.css">
+</head>
+
+
+<body>
+  <div id="cursor-glow"></div>
+    <div class="container">
+          <div class="main-header">
+  <img src="Pics/logo.png" alt="EVO">
+  <h1>Library Page</h1>
+  <img src="Pics/HITU.png" alt="HITU">
+</div>
+
+<!-- HEADER -->
+        <div class="search-container mb-5">
+          <div class="input-group input-group-lg">
+            <span class="input-group-text bg-transparent border-secondary">
+              <i class="bi bi-search">🔍</i>
+            </span>
+            <input 
+              type="text" 
+              class="form-control bg-transparent border-secondary text-white search-input" 
+              id="faqSearch" 
+              placeholder="Ask a question..."
+              aria-label="البحث عن الأسئلة"
+            >
+          </div>
+          <div id="searchResults" class="mt-2">
+
+          </div>
+        </div>
+<!-- BOOKS GRID -->
+<div class="books-container">
+
+    <!-- BOOK 1 -->
+    <div class="book-card">
+        <img src="Pics/1.jpg">
+        <h3>AI World</h3>
+       <a href="https://docs.google.com/viewerng/viewer?hl=ar&t=19&url=https://www.alarabimag.com/books/22375.pdf"> <button class="read-btn">Read</button> </a>
+        <button class="download-btn">Download</button>
+    </div>
+
+    <!-- BOOK 2 -->
+    <div class="book-card">
+        <img src="Pics/2.jpg">
+        <h3>Artificial Intelligence</h3>
+        <button class="read-btn">Read</button>
+        <button class="download-btn">Download</button>
+    </div>
+
+    <!-- BOOK 3 -->
+    <div class="book-card">
+        <img src="Pics/3.jpg">
+        <h3>Cyber Security</h3>
+        <button class="read-btn">Read</button>
+        <button class="download-btn">Download</button>
+    </div>
+
+    <!-- BOOK 4 -->
+    <div class="book-card">
+        <img src="Pics/4.jpg">
+        <h3>Data Science</h3>
+        <button class="read-btn">Read</button>
+        <button class="download-btn">Download</button>
+    </div>
+
+    <!-- BOOK 5 -->
+    <div class="book-card">
+        <img src="Pics/5.jpg">
+        <h3>Creative Autoronics</h3>
+         <button class="read-btn">Read</button>
+        <button class="download-btn">Download</button>
+    </div>
+
+    <!-- BOOK 6 -->
+    <div class="book-card">
+        <img src="Pics/6.jpg">
+        <h3>Mechatronic Systems</h3>
+        <button class="read-btn">Read</button>
+        <button class="download-btn">Download</button>
+    </div>
+
+</div>
+  <div class="bottom-nav">
+    <div class="icon-box" onclick="window.location.href='Main Page.html'">Home</div>
+    <div class="icon-box" onclick="window.location.href='book.library.html'">Library</div>
+    <div class="icon-box" onclick="window.location.href='control.html'">Control</div>
+    <div class="icon-box" onclick="window.location.href='GPS.html'">GPS</div>
+    <div class="icon-box" onclick="window.location.href='Dr.html'">Doctor</div>
+    <div class="icon-box" onclick="window.location.href='Student page.html'">Student</div>
+    <div class="icon-box" onclick="window.location.href='FAQ.html'">FAQ</div>
+    <div class="icon-box" onclick="window.location.href='News.html'">News</div>
+    <div class="icon-box" onclick="window.location.href='request-documents.html'">Requests</div>
+  </div>
+  <script src="JS/bootstrap.min.js"></script>
+  <script src="JS/library.js"></script>
+</body>
+</html>

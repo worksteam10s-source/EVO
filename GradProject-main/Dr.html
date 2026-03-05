@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة الدكتور - HITU</title>
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="CSS/theme.css">
+  <link rel="stylesheet" href="CSS/style1.css">
+  <style>
+    .doctor-avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid #6fc3ff;
+      box-shadow: 0 0 40px rgba(111,195,255,0.6);
+      transition: 0.5s;
+    }
+    .doctor-avatar:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 0 60px rgba(111,195,255,0.8);
+    }
+    .upload-zone {
+      background: rgba(255,255,255,0.08);
+      border: 2px dashed #6fc3ff;
+      border-radius: 20px;
+      padding: 10px;
+      text-align: center;
+      transition: all 0.4s;
+      cursor: pointer;
+    }
+    .upload-zone:hover {
+      background: rgba(111,195,255,0.15);
+      border-color: #00ff88;
+      transform: translateY(-5px);
+    }
+    .upload-zone.dragover {
+      background: rgba(0,255,136,0.3);
+      border-color: #00ff88;
+    }
+    .lecture-card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      transition: 0.4s;
+      
+    }
+    .lecture-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+    .start-live-btn {
+      background: linear-gradient(45deg, #ff3366, #ff6b6b);
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: white;
+    }
+    .start-live-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(255,51,102,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor Glow -->
+  <div id="cursor-glow"></div>
+
+  <!-- Header -->
+  <div class="main-header">
+    <img src="Pics/logo.png" alt="Logo">
+    <h1>Doctor Page</h1>
+    <img src="Pics/HITU.png" alt="HITU">
+  </div>
+
+  <div class="main-content">
+
+    <!-- Doctor Profile -->
+    <div class="text-center my-5">
+      <img src="Pics/logo.png" alt="د. شريف إبراهيم" class="doctor-avatar">
+      <h2 class="mt-4" style="color:#6fc3ff; font-weight:800;">د. شريف إبراهيم</h2>
+      <p class="text-muted">أستاذ مساعد - قسم الميكاترونكس</p>
+      <div class="d-flex justify-content-center gap-4 mt-3">
+        <div class="text-center">
+          <h4>48</h4>
+          <small>محاضرة هذا الفصل</small>
+        </div>
+        <div class="text-center">
+          <h4>312</h4>
+          <small>طالب مسجلين</small>
+        </div>
+        <div class="text-center">
+          <h4>4.8/5.0</h4>
+          <small>تقييم الطلاب</small>
+        </div>
+      </div>
+      
+  
+        <!-- Select with Lectures -->
+        <div class="lectures-select-container">
+            <label for="lecturesSelect" class="form-label">Select Lecture:</label>
+            <select id="lecturesSelect" class="form-select lectures-select">
+                <option value="">Choose a Lecture...</option>
+                
+                <optgroup label="Week 1-2">
+                    <option value="Lecture1.html">Lecture 1 - Basics</option>
+                    <option value="Lecture2.html">Lecture 2 - Advanced</option>
+                </optgroup>
+                
+                <optgroup label="Week 3-4">
+                    <option value="Lecture3.html">Lecture 3 - Data Science</option>
+                    <option value="Lecture4.html">Lecture 4 - Analytics</option>
+                </optgroup>
+                
+                <optgroup label="Week 5-6">
+                    <option value="Lecture5.html">Lecture 5 - Project 1</option>
+                    <option value="Lecture6.html">Lecture 6 - Project 2</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+
+
+    <!-- Current Lectures -->
+    <h3 class="mb-4" style="color:#6fc3ff;">محاضراتي اليوم</h3>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="lecture-card">
+          <img src="Pics/1.jpg" class="w-100" >
+          <div class="p-4">
+            <h5>Mechatronics Systems - الفرقة الثانية</h5>
+            <p class="text-muted">السبت • 10:00 ص - 12:00 م • قاعة 301</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge bg-success fs-6">87 طالب متصل</span>
+              <div class="upload-zone" id="uploadZone">
+                        <i class="bi bi-cloud-upload" style="font-size: 4rem; color:#6fc3ff;"></i>
+                        <h4 class="choose-file-label" >اسحب ملف المحاضرة هنا أو اضغط للرفع</h4>
+                        <p class="text-muted">يدعم: Excel, PDF, DOC</p>
+                        <input type="file" id="gradesFile" accept=".xlsx,.pdf,.doc" style="display:none;">
+                        <button class="btn btn-outline-light mt-3 px-5">اختر ملف</button>
+                        <div id="uploadStatus" class="text-center mt-3"></div>
+              </div>
+              <button class="start-live-btn">بدء البث المباشر</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="lecture-card">
+          <img src="Pics/2.jpg" class="w-100" >
+          <div class="p-4">
+            <h5>Control Systems - الفرقة الثالثة</h5>
+            <p class="text-muted">الأحد • 2:00 م - 4:00 م • لاب 205</p>
+            <button class="btn btn-outline-light w-100">إعداد المحاضرة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row g-4 mt-5">
+      <div class="col-md-4">
+        <div class="glass-card text-center p-5" style="cursor:pointer;">
+          <h1>Statistics</h1>
+          <p> أحصاءات الطلاب</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card text-center p-5" style="cursor:pointer;">
+          <h1>Assignments</h1>
+          <p>رفع وتصحيح المهام</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card text-center p-5" style="cursor:pointer;">
+          <h1>Live Chat</h1>
+          <p>التواصل مع الطلاب</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Nav -->
+  <div class="bottom-nav">
+    <div class="icon-box" onclick="window.location.href='Main Page.html'">Home</div>
+    <div class="icon-box" onclick="window.location.href='book.library.html'">Library</div>
+    <div class="icon-box" onclick="window.location.href='control.html'">Control</div>
+    <div class="icon-box" onclick="window.location.href='GPS.html'">GPS</div>
+    <div class="icon-box" onclick="window.location.href='Dr.html'">Doctor</div>
+    <div class="icon-box" onclick="window.location.href='Student page.html'">Student</div>
+    <div class="icon-box" onclick="window.location.href='FAQ.html'">FAQ</div>
+    <div class="icon-box" onclick="window.location.href='News.html'">News</div>
+    <div class="icon-box" onclick="window.location.href='request-documents.html'">Requests</div>
+  </div>
+  <script src="JS/bootstrap.min.js"></script>
+  <script>
+    // Cursor Glow
+    document.addEventListener('mousemove', e => {
+      document.getElementById('cursor-glow').style.left = e.clientX + 'px';
+      document.getElementById('cursor-glow').style.top = e.clientY + 'px';
+    });
+
+    // Upload Zone Drag & Drop
+    const zone = document.getElementById('uploadZone');
+    const input = document.getElementById('gradesFile');
+    const status = document.getElementById('uploadStatus');
+
+    zone.addEventListener('click', () => input.click());
+    input.addEventListener('change', e => {
+      if (e.target.files[0]) {
+        status.innerHTML = `<div class="alert alert-success mt-3">تم اختيار: ${e.target.files[0].name}</div>`;
+      }
+    });
+
+    ['dragover', 'dragenter'].forEach(evt => {
+      zone.addEventListener(evt, e => {
+        e.preventDefault();
+        zone.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'dragend', 'drop'].forEach(evt => {
+      zone.addEventListener(evt, e => {
+        e.preventDefault();
+        zone.classList.remove('dragover');
+      });
+    });
+
+    zone.addEventListener('drop', e => {
+      const file = e.dataTransfer.files[0];
+      if (file && (file.name.endsWith('.xlsx') || file.name.endsWith('.csv'))) {
+        status.innerHTML = `<div class="alert alert-success">جاري رفع ${file.name}... تم بنجاح!</div>`;
+      } else {
+        status.innerHTML = `<div class="alert alert-danger">يرجى رفع ملف Excel أو CSV فقط</div>`;
+      }
+    });
+  </script>
+</body>
+</html>

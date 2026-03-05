@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Page</title>
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="CSS/zeus.css">
+  <link rel="stylesheet" href="CSS/theme.css">
+</head>
+<body>
+  <div id="cursor-glow"></div>
+  <div class="main-header">
+  <img src="Pics/logo.png" alt="EVO">
+  <h1>FAQ Page</h1>
+  <img src="Pics/HITU.png" alt="HITU">
+</div>
+  <div class="container-fluid py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+
+        <!-- Search Box -->
+        <div class="search-container mb-5">
+          <div class="input-group input-group-lg">
+            <span class="input-group-text bg-transparent border-secondary">
+              <i class="bi bi-search">🔍</i>
+            </span>
+            <input 
+              type="text" 
+              class="form-control bg-transparent border-secondary text-white search-input" 
+              id="faqSearch" 
+              placeholder="Ask a question..."
+              aria-label="البحث عن الأسئلة"
+            >
+          </div>
+          <div id="searchResults" class="mt-2"></div>
+        </div>
+
+        <!-- FAQ Items Container -->
+        <div id="faqContainer">
+          <!-- FAQ Item 1 -->
+          <div class="faq-box mb-3" onclick="toggleAnswer(this)">
+            <div class="question d-flex justify-content-between align-items-center">
+              <span>أين يوجد مكتب شؤون الطلبة؟</span>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer mt-3">
+              يقع مكتب شؤون الطلبة داخل المبنى الرئيسي بجوار مكتب شؤون الموظفين.
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-box mb-3" onclick="toggleAnswer(this)">
+            <div class="question d-flex justify-content-between align-items-center">
+              <span>كيف أدفع رسوم الكلية؟</span>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer mt-3" style="display:none;">
+              <ol class="ps-4">
+                <li>الذهاب الى صفحة شؤون الطلبة</li>
+                <li>اختر "دفع المصاريف"</li>
+                <li>اختر طريقة الدفع</li>
+                <li>سجل الطلب و انتظر حتى تأتيك رسالة تأكيد</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-box mb-3" onclick="toggleAnswer(this)">
+            <div class="question d-flex justify-content-between align-items-center">
+              <span>كيف أحمل محاضراتي؟</span>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer mt-3">
+              يمكنك الذهاب إلى قسم المحاضرات واختيار المادة التي تريد، ثم تحميل المحاضرات المتاحة.
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-box mb-3" onclick="toggleAnswer(this)">
+            <div class="question d-flex justify-content-between align-items-center">
+              <span>هل يمكنني تعديل بيانات ملفي الشخصي؟</span>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer mt-3">
+              نعم، يمكنك تعديل بيانات ملفك الشخصي من قسم "الملف الشخصي" بالذهاب إلى صفحتك الشخصية.
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-box mb-3" onclick="toggleAnswer(this)">
+            <div class="question d-flex justify-content-between align-items-center">
+              <span>كيف أتواصل مع المدرسين؟</span>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer mt-3">
+              يمكنك التواصل مع المدرسين عبر البريد الجامعي أو من خلال قسم الرسائل في صفحتك الشخصية.
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="faq-box mb-3" onclick="toggleAnswer(this)">
+            <div class="question d-flex justify-content-between align-items-center">
+              <span>ما هي مواعيد الامتحانات؟</span>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer mt-3">
+              مواعيد الامتحانات يتم إعلانها في بداية الفصل الدراسي عبر البريد الجامعي والموقع الرسمي.
+            </div>
+          </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="alert alert-info d-none" role="alert">
+          <strong>لم يتم العثور على نتائج!</strong> جرب البحث بكلمات مختلفة.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAVIGATION -->
+  <div class="bottom-nav">
+    <div class="icon-box" onclick="window.location.href='Main Page.html'">Home</div>
+    <div class="icon-box" onclick="window.location.href='book.library.html'">Library</div>
+    <div class="icon-box" onclick="window.location.href='control.html'">Control</div>
+    <div class="icon-box" onclick="window.location.href='GPS.html'">GPS</div>
+    <div class="icon-box" onclick="window.location.href='Dr.html'">Doctor</div>
+    <div class="icon-box" onclick="window.location.href='Student page.html'">Student</div>
+    <div class="icon-box" onclick="window.location.href='FAQ.html'">FAQ</div>
+    <div class="icon-box" onclick="window.location.href='News.html'">News</div>
+    <div class="icon-box" onclick="window.location.href='request-documents.html'">Requests</div>
+  </div>
+  <script src="JS/bootstrap.min.js"></script>
+  <script src="JS/faq.js"></script>
+</body>
+</html>

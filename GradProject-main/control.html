@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Page - Helwan International Technological University</title>
+    
+    <link rel="stylesheet" href="CSS/zeus (2).css">
+  <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/theme.css">
+</head>
+<body>
+    <div id="cursor-glow"></div>
+    <div class="container">
+          <div class="main-header">
+  <img src="Pics/HITU.png" alt="HITU">
+  <h1>Control Page</h1>
+  <img src="Pics/logo.png" alt="EVO">
+</div>
+
+        <main class="main-content">
+            <div class="university-banner">
+                <div class="banner-overlay"></div>
+                
+                <img src="PICS/HITU.png" alt="University Logo Arabic" class="uni-logo ar">
+                
+                <h2 class="university-name-ar">جامعة حلوان التكنولوجية الدولية</h2> 
+                
+                <img src="PICS/HITU.png" alt="University Logo English" class="uni-logo en">
+                <h2 class="university-name-en">HELSWAN INTERNATIONAL TECHNOLOGICAL UNIVERSITY</h2>
+            </div>
+
+            <div class="controls-section">
+                <div class="dropdown-group">
+                    <div class="dropdown-container">
+                        <label for="course-select" class="dropdown-label">Course</label>
+                        <select id="course-select" class="custom-dropdown">
+                            <option value="web-applications">Web applications</option>
+                            <option value="data-structures">Data Structures</option>
+                            <option value="algorithms">Algorithms</option>
+                        </select>
+                    </div>
+                    <div class="dropdown-container">
+                        <label for="year-select" class="dropdown-label">Year</label>
+                        <select id="year-select" class="custom-dropdown">
+                            <option value="first">First</option>
+                            <option value="second" selected>Second</option>
+                            <option value="third">Third</option>
+                            <option value="fourth">Fourth</option>
+                        </select>
+                    </div>
+                    <div class="dropdown-container">
+                        <label for="department-select" class="dropdown-label">Department</label>
+                        <select id="department-select" class="custom-dropdown">
+                            <option value="cs">Computer Science</option>
+                            <option value="data-science" selected>Data Science</option>
+                            <option value="it">Information Technology</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="file-upload-section">
+                    <button class="submit-button choose-file-btn">
+                        <i class="fas fa-file-alt"></i> Submit
+                    </button>
+      <div class="upload-zone" id="uploadZone">
+        <i class="bi bi-cloud-upload" style="font-size: 4rem; color:#6fc3ff;"></i>
+        <h4 class="choose-file-label" >اسحب ملف الدرجات هنا أو اضغط للرفع</h4>
+        <p class="text-muted">يدعم: Excel, CSV, XLSX</p>
+        <input type="file" id="gradesFile" accept=".xlsx,.csv" style="display:none;">
+        <button class="btn btn-outline-light mt-3 px-5">اختر ملف</button>
+      </div>
+      <div id="uploadStatus" class="text-center mt-3"></div>
+            </div>
+
+            <div class="data-table-container">
+                <div class="table-overlay"></div>
+                <div class="data-table">
+                    <div class="table-grid">
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+  <div class="bottom-nav">
+    <div class="icon-box" onclick="window.location.href='Main Page.html'">Home</div>
+    <div class="icon-box" onclick="window.location.href='book.library.html'">Library</div>
+    <div class="icon-box" onclick="window.location.href='control.html'">Control</div>
+    <div class="icon-box" onclick="window.location.href='GPS.html'">GPS</div>
+    <div class="icon-box" onclick="window.location.href='Dr.html'">Doctor</div>
+    <div class="icon-box" onclick="window.location.href='Student page.html'">Student</div>
+    <div class="icon-box" onclick="window.location.href='FAQ.html'">FAQ</div>
+    <div class="icon-box" onclick="window.location.href='News.html'">News</div>
+    <div class="icon-box" onclick="window.location.href='request-documents.html'">Requests</div>
+  </div>
+    </div>
+
+    <script src="JS/zeus (2).js"></script>
+</body>
+</html>
