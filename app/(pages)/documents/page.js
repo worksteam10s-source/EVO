@@ -322,7 +322,7 @@ export default function DocumentsPage() {
                               ...selectStyle, marginBottom: 0,
                               display: 'flex', alignItems: 'center', gap: 10,
                               cursor: 'pointer',
-                              color: docValues[doc.label] ? '#4caf50' : '#d2d2d2ff',
+                              color: docValues[doc.label] ? '#4caf50' : 'rgba(255, 255, 255, 0.5)',
                               borderStyle: 'dashed',
                             }}
                           >
@@ -576,7 +576,7 @@ export default function DocumentsPage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
         input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); }
-        textarea::placeholder, input::placeholder { color: #666; }
+        textarea::placeholder, input::placeholder { color: rgba(255, 255, 255, 0.4); }
         select option { background: #1a1a2e; color: #fff; }
         @media (max-width: 600px) { table { font-size: 12px; } }
       `}</style>

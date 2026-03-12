@@ -79,7 +79,7 @@ export default function DoctorPage() {
         }}>
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'linear-gradient(to right, transparent 0%, rgba(21, 32, 54, 0.6) 40%, rgba(21, 32, 54, 0.95) 100%)' }}></div>
           <div className="position-relative d-flex flex-column flex-md-row-reverse align-items-center align-items-md-start" style={{ zIndex: 1 }}>
-            <img src="/Pics/logo.png" alt="Dr. Sherif Ibrahim" style={{ width: '130px', height: '130px', borderRadius: '50%', border: '4px solid rgba(255,255,255,0.2)', marginLeft: '30px', marginBottom: '15px', transition: 'transform 0.3s' }} onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'} />
+            <img src="/Pics/student.jpg" alt="Dr. Sherif Ibrahim" style={{ width: '130px', height: '130px', borderRadius: '50%', border: '4px solid rgba(255,255,255,0.2)', marginLeft: '30px', marginBottom: '15px', transition: 'transform 0.3s' }} onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'} />
             <div className="text-center text-md-end mt-2">
               <h2 style={{ fontWeight: 700, marginBottom: '5px', fontSize: '2.2rem' }}>Dr. Sherif Ibrahim</h2>
               <p style={{ fontSize: '1.2rem', marginBottom: '2px', color: '#d1e8ff' }}>Assistant Professor</p>
