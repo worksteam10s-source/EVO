@@ -1,0 +1,305 @@
+.newsPage{
+padding:40px;
+background-color: #0f1a2e; 
+min-height:100vh;
+}
+
+/* hero section */
+
+.hero{
+text-align:center;
+margin-bottom:60px;
+padding-top:50px;
+}
+
+.hero::before {
+content: "HELWAN INTERNATIONAL TECHNOLOGICAL UNIVERSITY";
+display: block;
+color: #D4A017;
+font-size: 13px;
+letter-spacing: 3px;
+margin-bottom: 25px;
+padding: 14px 35px;
+border: 2px solid #D4A017;
+border-radius: 35px;
+width: fit-content;
+margin-left: auto;
+margin-right: auto;
+font-weight: 600;
+text-transform: uppercase;
+}
+
+.hero h1{
+color:#ffffff;
+font-size: 56px;
+margin-bottom:20px;
+font-weight: 700;
+font-family: 'Georgia', serif;
+}
+
+.hero p{
+color:#8ba8c8;
+font-size:17px;
+line-height:1.8;
+font-weight: 300;
+}
+
+/* layout */
+
+.main-content {
+display:flex;
+gap:40px;
+align-items:flex-start;
+}
+
+/* sidebar */
+
+.filters-sidebar{
+width:220px;
+background: rgba(26, 42, 58, 0.7);
+border:2px solid #D4A017;
+border-radius:15px;
+padding:20px;
+position:sticky;
+top:40px;   /* هنا التعديل */
+height:fit-content;
+}
+
+/* search */
+
+.search-section{
+text-align:center;
+margin-bottom:30px;
+}
+
+.search-bar{
+width:100%;
+padding:12px 15px;
+font-size:14px;
+border:2px solid #D4A017;
+border-radius:20px;
+outline:none;
+background-color: rgba(15, 26, 46, 0.6);
+color:#ffffff;
+margin-bottom:20px;
+}
+
+.search-bar::placeholder{
+color:#8ba8c8;
+}
+
+/* category */
+
+.category-filters{
+margin-bottom:25px;
+}
+
+.category-filters h3{
+color:#D4A017;
+font-size:15px;
+margin-bottom:12px;
+text-transform:uppercase;
+}
+
+.category-label{
+display:flex;
+align-items:center;
+margin-bottom:10px;
+color:#8ba8c8;
+font-size:14px;
+cursor:pointer;
+}
+
+.category-label input{
+margin-right:8px;
+accent-color:#D4A017;
+}
+
+/* date */
+
+.date-filters{
+margin-bottom:20px;
+}
+
+.date-filters h3{
+color:#D4A017;
+font-size:15px;
+margin-bottom:12px;
+text-transform:uppercase;
+}
+
+.date-label{
+display:flex;
+align-items:center;
+margin-bottom:10px;
+color:#8ba8c8;
+font-size:14px;
+cursor:pointer;
+}
+
+.date-label input{
+margin-right:8px;
+accent-color:#D4A017;
+}
+
+/* grid */
+
+.newsGrid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+flex:1;
+}
+
+/* card */
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+min-height:480px;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.cardImage{
+width:100%;
+height:auto;
+}
+
+.cardBody{
+padding:20px;
+}
+
+.date{
+color:#D4A017;
+font-size:14px;
+}
+
+.cardBody h3{
+margin:10px 0;
+color:#1F4E8C;
+}
+
+.cardBody p{
+font-size:14px;
+color:#555;
+margin-bottom:15px;
+}
+
+.readBtn{
+background:#D4A017;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.readBtn:hover{
+background:#b89414;
+}
+
+/* modal */
+
+.modalOverlay{
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,0.5);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:1000;
+padding:20px;
+}
+
+.modalContent{
+background:white;
+border-radius:12px;
+overflow:hidden;
+width:70%;
+max-width:900px;
+height:90vh;
+overflow-y:auto;
+}
+
+.modalHeader{
+width:100%;
+height:300px;
+overflow:hidden;
+}
+
+.modalImage{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.modalBody{
+padding:40px;
+}
+
+.modalBody h2{
+color:#1F4E8C;
+font-size:32px;
+margin:15px 0;
+}
+
+.modalBody p{
+color:#555;
+font-size:16px;
+line-height:1.8;
+}
+
+/* mobile */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:26px;
+}
+
+.newsPage{
+padding:20px;
+}
+
+.main-content{
+flex-direction:column;
+}
+
+.filters-sidebar{
+width:100%;
+position:static;
+}
+
+.newsGrid{
+grid-template-columns:1fr;
+}
+
+.modalContent{
+width:95%;
+height:85vh;
+}
+
+.modalBody{
+padding:25px;
+}
+
+}
+
+/* tablet */
+
+@media(max-width:1024px){
+
+.newsGrid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}

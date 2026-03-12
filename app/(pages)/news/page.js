@@ -1,49 +1,102 @@
-'use client'
-
-import Header from '@/app/components/Header'
+// app/news/page.js
+"use client";
+import '@/styles/news.css'
+import NewsCard from "@/app/components/NewsCard";
+import { useState, useEffect } from 'react';
+import { useRouter } from "next/navigation";
+import CircularMenu from '@/app/components/CircularMenu';
+import { useNewsStore } from '@/app/components/newsStore';
 
 export default function NewsPage() {
-  const newsList = [
-    {
-      id: 1,
-      title: 'انطلاق دوري كرة القدم',
-      date: '2024-03-01',
-      content: 'أعلنت جامعة حلوان التكنولوجية الدولية عن انطلاق فعاليات دوري كرة القدم...',
-    },
-    {
-      id: 2,
-      title: 'زيارة علمية للمتحف القومي',
-      date: '2024-02-28',
-      content: 'في إطار حرص جامعة حلوان التكنولوجية الدولية على دمج الجانب النظري...',
-    },
-    {
-      id: 3,
-      title: 'تكريم الطلاب المتميزين',
-      date: '2024-02-25',
-      content: 'تم تكريم الطلاب المتميزين في برنامج خاص...',
-    },
-  ]
+  const router = useRouter();
+  const { newsList: news } = useNewsStore();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeDate, setActiveDate] = useState('All');
+
+  useEffect(() => {
+    const handleMouseMove = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const categories = ['All', ...new Set(news.map(item => item.category))];
+
+  const filteredNews = news.filter(item => {
+    const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const itemDate = new Date(item.date.replace(/(\d{1,2}) (\w+) (\d{4})/, '$2 $1, $3'));
+    const isRecent = itemDate > new Date('January 1, 2025');
+    const matchesDate =
+      activeDate === 'All' ||
+      (activeDate === 'Recent' && isRecent) ||
+      (activeDate === 'Older' && !isRecent);
+    const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
+    return matchesSearch && matchesDate && matchesCategory;
+  });
 
   return (
-    <>
-      <Header />
-      <div className="container-fluid p-4">
-        <h1>Latest News</h1>
+    <div className="newsPage">
 
-        <div id="div2">
-          <h3 id="h3">University News</h3>
-          <div id="div2-1">
-            {newsList.map((news) => (
-              <article key={news.id} style={{ marginBottom: '30px', paddingBottom: '30px', borderBottom: '1px solid rgba(100, 200, 255, 0.2)' }}>
-                <h3>{news.title}</h3>
-                <p style={{ color: '#64c8ff', fontSize: '0.9rem' }}>{news.date}</p>
-                <p>{news.content}</p>
-                <a href="#">Read more →</a>
-              </article>
-            ))}
-          </div>
+      <section className="hero">
+        <h1>HITU Campus News</h1>
+        <p>Latest news and announcements from Helwan International Technological University</p>
+        {/* ── Add News Button ── */}
+        <button
+          className="addNewsBtn"
+          onClick={() => router.push("/news/admin")}
+        >
+          + Add News
+        </button>
+      </section>
+
+      {/* ── Search + Filter Bar ── */}
+      <div className="controls-bar">
+        <input
+          type="text"
+          placeholder="Search news..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-bar"
+        />
+
+        <div className="filter-buttons">
+          {/* Category Filters */}
+          {categories.map(cat => (
+            <button
+              key={cat}
+              className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+
+          {/* Date Filters */}
+          <button
+            className={`filter-btn ${activeDate === 'Recent' ? 'active' : ''}`}
+            onClick={() => setActiveDate(activeDate === 'Recent' ? 'All' : 'Recent')}
+          >
+            Recent
+          </button>
+          <button
+            className={`filter-btn ${activeDate === 'Older' ? 'active' : ''}`}
+            onClick={() => setActiveDate(activeDate === 'Older' ? 'All' : 'Older')}
+          >
+            Older
+          </button>
         </div>
       </div>
-    </>
-  )
+
+      {/* ── News Grid ── */}
+      <section className="newsGrid">
+        {filteredNews.map((item) => (
+          <NewsCard key={item.id} news={item} />
+        ))}
+      </section>
+
+      <CircularMenu />
+    </div>
+  );
 }

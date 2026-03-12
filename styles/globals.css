@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Global Styles */
 * {
   margin: 0;
@@ -10,11 +14,17 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-primary, 'Cinzel', serif);
   background-color: #0a0e27;
   color: #ffffff;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+body.no-body-bg {
+  background: none !important;
+  background-color: transparent !important;
+  padding-bottom: 0 !important;
 }
 
 .cursor-glow {
@@ -67,7 +77,4 @@ body {
     font-size: 14px;
   }
 
-  body {
-    padding: 0 10px;
-  }
 }

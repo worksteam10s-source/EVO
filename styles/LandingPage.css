@@ -1,0 +1,134 @@
+.body {
+  background: #0A1F3A;
+  color: #FFFFFF;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.cursorGlow {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(96,165,250,0.25), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+/* Header – futuristic */
+.mainHeader {
+  background: rgba(15, 42, 74, 0.7);
+  backdrop-filter: blur(15px);
+  padding: 1rem 3rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.hituText {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #60A5FA;
+  text-shadow: 0 0 20px rgba(96,165,250,0.6);
+}
+
+.fullName {
+  font-size: 1.1rem;
+  color: #F4A261;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Glass cards */
+.glassCard {
+  background: rgba(15, 42, 74, 0.5);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+  transition: transform 0.4s;
+}
+
+.glassCard:hover {
+  transform: translateY(-10px);
+}
+
+/* Golden buttons مثل الـ Login */
+.goldenBtn {
+  background: linear-gradient(45deg, #F4A261, #D97706);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(244,162,97,0.4);
+  transition: all 0.3s;
+}
+
+.goldenBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 15px 50px rgba(244,162,97,0.6);
+}
+
+/* News cards */
+.glassNewsCard {
+  background: rgba(15, 42, 74, 0.6);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.newsBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7);
+}
+
+.newsContent {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(10,31,58,0.9), transparent);
+}
+
+/* Bottom Nav */
+.bottomNav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  padding: 1rem 3rem;
+  border-radius: 60px;
+  display: flex;
+  gap: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.iconBox {
+  color: #A0B0C0;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.iconBox:hover {
+  color: #60A5FA;
+  transform: scale(1.3);
+}

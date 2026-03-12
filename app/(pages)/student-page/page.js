@@ -1,32 +1,291 @@
 'use client'
-
+import CircularMenu from '../../components/CircularMenu';
+import '@/styles/student.css'
+import '@/styles/bootstrap.min.css'
+import '@/styles/zeus.css'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import Header from '@/app/components/Header'
+import GradesComponent from './components/GradesComponent'
+import LecturesComponent from './components/LecturesComponent'
+import ActivitiesComponent from './components/ActivitiesComponent'
+import StatisticsComponent from './components/StatisticsComponent'
+import AssignmentsComponent from './components/AssignmentsComponent'
+import PaymentsComponent from './components/PaymentsComponent'
+import RoadmapComponent from './components/RoadmapComponent'
+import ProfileComponent from './components/ProfileComponent'
+import {
+  ChartBarIcon, VideoIcon, TargetIcon, TrendUpIcon,
+  CheckCircleIcon, MapIcon, CreditCardIcon
+} from '@/app/components/Icons'
 
 export default function StudentPage() {
+  const router = useRouter()
+  const [studentInfo, setStudentInfo] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [activeTab, setActiveTab] = useState('profile')
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [isClient, setIsClient] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(true)
+
+  // TODO: Replace with actual API call
+  const fetchStudentInfo = async () => {
+    try {
+      // const response = await fetch('/api/student/info')
+      // const data = await response.json()
+      // setStudentInfo(data)
+      
+      // Mock data - will be replaced with API
+      setStudentInfo({
+        name: 'Abdulrahman Reda Kamel',
+        specialty: 'Data Science - Year 2',
+        studentId: '247818',
+        phone: '0155984249',
+        address: '10th of Ramadan',
+        image: 'Pics/student.jpg'
+      })
+    } catch (error) {
+      console.error('Error fetching student info:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchStudentInfo()
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768)
+      if (window.innerWidth >= 768) {
+        setSidebarOpen(true)
+      } else {
+        setSidebarOpen(false)
+      }
+    }
+    
+    // Set initial state on mount
+    handleResize()
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const handleLogout = () => {
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.removeItem('studentToken')
+      sessionStorage.clear()
+      router.push('/login')
+    }
+  }
+
+  const navItems = [
+    { label: 'Grades',      id: 'grades',      icon: <ChartBarIcon size={18} /> },
+    { label: 'Lectures',    id: 'lectures',    icon: <VideoIcon size={18} /> },
+    { label: 'Activities',  id: 'activities',  icon: <TargetIcon size={18} /> },
+    { label: 'Statistics',  id: 'statistics',  icon: <TrendUpIcon size={18} /> },
+    { label: 'Assignments', id: 'assignments', icon: <CheckCircleIcon size={18} /> },
+    { label: 'Roadmap',     id: 'roadmap',     icon: <MapIcon size={18} /> },
+    { label: 'Payments',    id: 'payments',    icon: <CreditCardIcon size={18} /> },
+  ]
+
+  const renderComponent = () => {
+    switch(activeTab) {
+      case 'profile':
+        return <ProfileComponent studentInfo={studentInfo} />
+      case 'grades':
+        return <GradesComponent />
+      case 'lectures':
+        return <LecturesComponent />
+      case 'activities':
+        return <ActivitiesComponent />
+      case 'statistics':
+        return <StatisticsComponent />
+      case 'assignments':
+        return <AssignmentsComponent />
+      case 'roadmap':
+        return <RoadmapComponent />
+      case 'payments':
+        return <PaymentsComponent />
+      default:
+        return <ProfileComponent studentInfo={studentInfo} />
+    }
+  }
+
   return (
     <>
-      <Header />
-      <div className="container-fluid p-4">
-        <h1>Student Dashboard</h1>
-        <p>Welcome to your student portal. This page is under construction.</p>
-        
-        <div id="div2">
-          <h3 id="h3">Features Coming Soon</h3>
-          <div id="div2-1">
-            <h4>Academic Information</h4>
-            <p>View your courses, grades, and academic progress</p>
-            
-            <h4>Course Registration</h4>
-            <p>Register for courses and manage your schedule</p>
-            
-            <h4>Document Request</h4>
-            <p>Request official documents and certificates</p>
-            
-            <h4>Messages</h4>
-            <p>Communicate with your instructors and advisors</p>
-          </div>
+      <Header 
+        onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
+        showMenuButton={true}
+        title="Student Portal"
+      />
+      <div id="cursor-glow"></div>
+
+      {/* Sidebar Overlay - Mobile Only */}
+      
+
+      {/* Desktop Layout */}
+      <div style={{ display: 'flex', minHeight: 'calc(100vh - 70px)', width: '100%' }}>
+        <div className="sidebar" style={{
+          width: isDesktop ? '320px' : '280px',
+          position: isDesktop ? 'relative' : 'fixed',
+          right: 0,
+          top: isDesktop ? '0' : '70px',
+          height: isDesktop ? 'auto' : 'calc(100vh - 70px)',
+          backgroundColor: '#1a1a2e',
+          zIndex: isDesktop ? 'auto' : '1001',
+          overflowY: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          transform: !isDesktop && !sidebarOpen ? 'translateX(200%)' : 'translateX(0)',
+          transition: !isDesktop ? 'transform 0.3s ease' : 'none',
+          borderRight: '1px solid rgba(255, 255, 255, 0.1)'
+        }}>
+          <div
+            className={`profile${activeTab === 'profile' ? ' profile--active' : ''}`}
+            onClick={() => {
+              setActiveTab('profile')
+              if (!isDesktop) setSidebarOpen(false)
+            }}
+            title="View full profile"
+          >
+            <img src={studentInfo?.image || 'Pics/student.jpg'} alt="Student" />
+            <div>
+              <strong>{studentInfo?.name || 'Abdulrahman Reda Kamel'}</strong><br/>
+              <small>{studentInfo?.specialty || 'Data Science - Year 2'}</small>
+            </div>
+            </div>
+
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => {
+                setActiveTab(item.id)
+                if (!isDesktop) {
+                  setSidebarOpen(false)
+                }
+              }}
+              className={`menu-item ${activeTab === item.id ? 'active' : ''}`}
+              style={{
+                backgroundColor: activeTab === item.id ? '#d29505ff' : 'transparent',
+                color: activeTab === item.id ? '#000' : '#fff',
+                border: 'none',
+                cursor: 'pointer',
+                width: '100%',
+                padding: !isDesktop ? '12px 15px' : '14px 18px',
+                textAlign: 'right',
+                fontSize: !isDesktop ? '13px' : '15px',
+                transition: 'all 0.3s ease',
+                fontWeight: '500'
+              }}
+            >
+              {item.icon} {item.label}
+            </button>
+          ))}
+          <button
+            onClick={(e) => { 
+              e.preventDefault()
+              handleLogout()
+            }}
+            className="menu-item"
+            style={{
+              marginTop: 'auto',
+              color: '#ff6b6b',
+              border: 'none',
+              backgroundColor: 'transparent',
+              cursor: 'pointer',
+              width: '100%',
+              padding: '12px 15px',
+              textAlign: 'right',
+              fontSize: '14px'
+            }}
+          >
+            Logout
+          </button>
+        </div>
+
+        <div className="main-content" style={{
+          flex: 1,
+          overflow: 'auto',
+          padding: !isDesktop ? '15px' : '20px',
+          width: '100%',
+          minHeight: '100%'
+        }}>
+          {isLoading ? (
+            <div className="alert alert-info">Loading data...</div>
+          ) : (
+            <>
+              {renderComponent()}
+            </>
+          )}
         </div>
       </div>
+
+      {/* Global Responsive Styles */}
+      <style>{`
+        @media (max-width: 767px) {
+          .main-content {
+            padding: 12px;
+          }
+
+          .main-content h2,
+          .main-content h3 {
+            font-size: 18px !important;
+            margin-bottom: 15px !important;
+          }
+
+          .main-content table {
+            font-size: 12px;
+          }
+
+          .main-content .table th,
+          .main-content .table td {
+            padding: 8px 4px !important;
+          }
+
+          .main-content .card {
+            margin-bottom: 10px !important;
+            padding: 12px !important;
+          }
+
+          .main-content .btn {
+            padding: 6px 10px !important;
+            font-size: 12px !important;
+          }
+
+          .main-content input,
+          .main-content select,
+          .main-content textarea {
+            font-size: 14px !important;
+            padding: 8px !important;
+          }
+
+          .main-content .container {
+            padding: 0 !important;
+          }
+
+          .main-content .row {
+            margin-left: -6px !important;
+            margin-right: -6px !important;
+          }
+
+          .main-content [class*='col-'] {
+            padding-left: 6px !important;
+            padding-right: 6px !important;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .main-content {
+            padding: 20px;
+          }
+        }
+      `}</style>
+
+     <CircularMenu />
     </>
   )
 }
